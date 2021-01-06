@@ -1,0 +1,128 @@
+schemes:
+  - http
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  /chapters:         # path of the user from your endpoint
+    post: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Create chapter
+      produces:
+      - application/json
+      parameters:
+      - name:       # name of parameter passed
+        type: string
+      - in: body
+        name: create chapter
+        description: It enables a user to create chapter
+        required: false
+        schema:
+          $ref: '#/definitions/chapterCreate'
+      responses:
+        201:
+          description: An object with a new chapter
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/chapterCreate'
+        401:
+          description: Unauthorized users
+    get: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Get All Chapters
+      produces:
+      - application/json
+      responses:
+        200:
+          description: An object with a chapter values
+        401:
+          description: Unauthorized users
+  /chapters/{id}:         # path of the user from your endpoint
+    get: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Get chapter By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to fetch a chapter
+          required: false
+          type: string
+      responses:
+        200:
+          description: An object with a chapter values
+        401:
+          description: Unauthorized users
+          # path of the user from your endpoint
+    delete: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Delete chapter By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to delete a chapter
+          required: false
+          type: string
+      responses:
+        200:
+          description: Delete Confirmation
+        401:
+          description: Unauthorized users
+    put: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Update chapter
+      produces:
+        - application/json
+      parameters:
+        - name:       # name of parameter passed
+          type: string
+        - in: body
+          name: update chapter
+          description: It enables a user to update chapter
+          required: false
+          schema:
+            $ref: '#/definitions/chapterUpdate'
+      responses:
+        200:
+          description: An object with a chapter
+        401:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  chapterCreate:
+    type: object
+    properties:
+      name:
+        type: string
+  chapterUpdate:
+    type: object
+    properties:
+      chapter_id:
+        type: string
+      name:
+        type: string
+      steps:
+        type: array
+        items:
+          type: string

@@ -1,0 +1,53 @@
+paths:
+  /users:         # path of the user from your endpoint
+    post:              # endpoint request type (put request)
+      tags:
+        - User
+      summary: Create a new user
+      produces:
+      - application/json
+      parameters:     # request parameters
+      - name:       # name of parameter passed
+        type: string
+      - in: body
+        name: create user
+        description: It enables a user to signup
+        required: false
+        schema:
+          $ref: '#/definitions/signup'
+        example:   # Object-level example
+          username  : sifan059
+          firstname : sifan
+          lastname  : ovi
+          passoword : testpass
+
+      responses:
+        200:
+          description: An object with a new signed up user
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/signup'
+        401:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  signup:
+    type: object
+    properties:
+          username:
+            type: string
+            required: true
+          firstname:
+            type: string
+            required: true
+          lastname:
+            type: string
+            required: true
+          password:
+            type: string
+            required: true
+          invitecode:
+            type: string
+          imageUrl:
+            type : string
+

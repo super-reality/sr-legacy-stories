@@ -1,0 +1,34 @@
+paths:
+  /authentication:         # path of the user from your endpoint
+    post:              # endpoint request type (put request)
+      tags:
+        - User
+      summary: Sign in using credentials
+      produces:
+      - application/json
+      parameters:     # request parameters
+      - username:       # name of parameter passed
+        type: string
+      - password:       # name of parameter passed
+          type: string
+      - in: body
+        name: Sign in user user
+        description: It enables a user to sign up
+        required: false
+        schema:
+          $ref: '#/definitions/signin'
+      responses:
+        200:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  signin:
+    type: object
+    properties:
+      strategy:
+        type: string
+      username:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true

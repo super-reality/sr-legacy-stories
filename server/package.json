@@ -1,7 +1,7 @@
 {
-  "name": "test",
+  "name": "Super reality real time",
   "description": "",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "",
   "private": true,
   "main": "src",
@@ -9,8 +9,8 @@
     "feathers"
   ],
   "author": {
-    "name": "Isroiljon Tolibov",
-    "email": "johnyjohny1861@gmail.com"
+    "name": "nick marks",
+    "email": "nick@gamegen.com"
   },
   "contributors": [],
   "bugs": {},
@@ -50,10 +50,13 @@
     "cors": "^2.8.5",
     "feathers-authentication-hooks": "^1.0.2",
     "feathers-mongoose": "^8.3.0",
+    "feathers-swagger": "^1.2.1",
     "helmet": "^3.22.0",
     "mongodb-core": "^3.2.7",
     "mongoose": "^5.9.6",
     "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.1.6",
     "winston": "^3.2.1"
   },
   "devDependencies": {

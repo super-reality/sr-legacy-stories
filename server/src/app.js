@@ -14,13 +14,23 @@ const middleware = require('./middleware')
 const services = require('./services')
 const appHooks = require('./app.hooks')
 const channels = require('./channels')
-
+const swagger = require('feathers-swagger');
 const authentication = require('./authentication')
 
 const mongoose = require('./mongoose')
 
 const app = express(feathers())
-
+app.configure(swagger({
+    prefix: /api\/v\d\//,
+    docsPath: '/docs',
+    specs: {
+      info: {
+        title: 'A test',
+        description: 'A description',
+        version: '1.0.0',
+      },
+    },
+  }))
 // Load app configuration
 app.configure(configuration())
 // Enable security, CORS, compression, favicon and body parsing

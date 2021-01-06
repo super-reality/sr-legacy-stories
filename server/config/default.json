@@ -28,5 +28,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://localhost:27017/trello"
+  "mongodb": "mongodb+srv://sifan:gamegensifan@cluster0.ke1ja.mongodb.net/super-reality-realtime"
 }

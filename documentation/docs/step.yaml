@@ -1,0 +1,132 @@
+schemes:
+  - http
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  /steps:         # path of the user from your endpoint
+    post: # endpoint request type (post request)
+      tags:
+        - Step
+      security:
+        - Bearer: []
+      summary: Create Step
+      produces:
+      - application/json
+      parameters:
+      - name:       # name of parameter passed
+        type: string
+      - in: body
+        name: create Step
+        description: It enables a user to create Step
+        required: false
+        schema:
+          $ref: '#/definitions/StepCreate'
+      responses:
+        201:
+          description: An object with a new Step
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/StepCreate'
+        401:
+          description: Unauthorized users
+    get: # endpoint request type (post request)
+      tags:
+        - Step
+      security:
+        - Bearer: []
+      summary: Get All Step
+      produces:
+      - application/json
+      responses:
+        200:
+          description: An object with a Step values
+        401:
+          description: Unauthorized users
+  /steps/{id}: # path of the user from your endpoint
+    get: # endpoint request type (post request)
+      tags:
+        - Step
+      security:
+        - Bearer: []
+      summary: Get Step By Id
+      produces:
+        - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to fetch a Step
+          required: false
+          type: string
+      responses:
+        200:
+          description: An object with a Step values
+        401:
+          description: Unauthorized users
+    delete: # endpoint request type (post request)
+      tags:
+        - Step
+      security:
+        - Bearer: []
+      summary: Delete Step By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to delete a Step
+          required: false
+          type: string
+      responses:
+        200:
+          description: Delete Confirmation
+        401:
+          description: Unauthorized users
+    put: # endpoint request type (post request)
+      tags:
+        - Step
+      security:
+        - Bearer: []
+      summary: Update Step By Id
+      produces:
+        - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to update a Step
+          required: false
+          type: string
+        - in: body
+          type: string
+          name: payload
+          schema:
+            required: true
+            $ref: '#/definitions/stepUpdate'
+      responses:
+        200:
+          description: Delete Confirmation
+        401:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  StepCreate:
+    type: object
+    properties:
+      name:
+        type: string
+      anchor:
+        type: string
+  StepUpdate:
+    type: object
+    properties:
+      name:
+        type: string
+      anchor:
+        type: string
+      items:
+        type: array
+        items:
+          type: object

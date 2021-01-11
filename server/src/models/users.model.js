@@ -11,7 +11,7 @@ module.exports = function (app) {
         inviteCode: {type: String},
         firstname: {type: String, required: true},
         lastname: {type: String, required: true},
-        imageUrl: {type: String},
+        avatar: {type: String,},
     }, {
         timestamps: true
     })

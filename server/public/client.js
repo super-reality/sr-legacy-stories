@@ -91,21 +91,8 @@ const addUser = user => {
     // Add the user to the list
     userList.innerHTML += `<li>
       <a class="block relative" href="#">
-        <span class="absolute username">${escape(user.name)}</span>
-      </a>
-    </li>`;
-
-    // Update the number of users
-    const userCount = document.querySelectorAll('.user-list li').length;
-    
-    document.querySelector('.online-count').innerHTML = userCount;
-  }
-    if(userList) {
-    // Add the user to the list
-    userList.innerHTML += `<li>
-      <a class="block relative" href="#">
-      <!--   <img src="${user.avatar}" alt="" class="avatar"> -->
-        <span class="absolute username">${escape(user.name)}</span>
+        <img src="${user.avatar}" alt="" class="avatar">
+        <span class="absolute username">${escape(user.username)}</span>
       </a>
     </li>`;
 
@@ -126,10 +113,10 @@ const addMessage = message => {
 
   if(chat) {
     chat.innerHTML += `<div class="message flex flex-row">
-      <img src="${user.avatar}" alt="${user.name}" class="avatar">
+      <img src="${user.imageUrl}" alt="${user.username}" class="avatar">
       <div class="message-wrapper">
         <p class="message-header">
-          <span class="username font-600">${escape(user.name )}</span>
+          <span class="username font-600">${escape(user.username)}</span>
           <span class="sent-date font-300">${moment(message.createdAt).format('MMM Do, hh:mm:ss')}</span>
         </p>
         <p class="message-content font-300">${text}</p>
@@ -161,19 +148,13 @@ const showChat = async () => {
       $limit: 25
     }
   });
-  const chapters = await client.service('chapters').find({
-    query: {
-      $sort: { createdAt: -1 },
-      $limit: 25
-    }
-  });
-  
+
   // We want to show the newest message last
   messages.data.reverse().forEach(addMessage);
 
   // Find all users
   const users = await client.service('users').find();
-
+  console.log(users.data)
   // Add each user to the list
   users.data.forEach(addUser);
 };
@@ -222,7 +203,7 @@ const addEventListener = (selector, event, handler) => {
 addEventListener('#signup', 'click', async () => {
   // For signup, create a new user and then log them in
   const credentials = getCredentials();
-    
+
   // First create the user
   await client.service('users').create(credentials);
   // If successful log them in
@@ -239,7 +220,7 @@ addEventListener('#login', 'click', async () => {
 // "Logout" button click handler
 addEventListener('#logout', 'click', async () => {
   await client.logout();
-    
+
   document.getElementById('app').innerHTML = loginHTML;
 });
 
@@ -262,8 +243,7 @@ addEventListener('#send-message', 'submit', async ev => {
 client.service('messages').on('created', addMessage);
 
 // We will also see when new users get created in real-time
-client.service('chapters').on('created', addUser);
-
+client.service('users').on('created', addUser);
 
 // Call login right away so we can show the chat window
 // If the user can already be authenticated

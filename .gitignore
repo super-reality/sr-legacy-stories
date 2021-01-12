@@ -5,3 +5,4 @@ server/package-lock.json
 server/README.md
 server/.editorconfig
 documentation/node_modules
+documentation/npm-debug.log

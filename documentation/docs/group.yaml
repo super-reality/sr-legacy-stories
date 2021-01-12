@@ -1,0 +1,126 @@
+schemes:
+  - http
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  /groups:         # path of the user from your endpoint
+    post: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Create group
+      produces:
+      - application/json
+      parameters:
+      - name:       # name of parameter passed
+        type: string
+      - in: body
+        name: create chapter
+        description: It enables a user to create chapter
+        required: false
+        schema:
+          $ref: '#/definitions/groupCreate'
+      responses:
+        201:
+          description: An object with a new group
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/groupCreate'
+        401:
+          description: Unauthorized users
+    get: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Get All groups
+      produces:
+      - application/json
+      responses:
+        200:
+          description: An object with a group values
+        401:
+          description: Unauthorized users
+  /chapters/{id}:         # path of the user from your endpoint
+    get: # endpoint request type (post request)
+      tags:
+        - Chapter
+      security:
+        - Bearer: []
+      summary: Get group By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to fetch a group
+          required: false
+          type: string
+      responses:
+        200:
+          description: An object with a chapter values
+        401:
+          description: Unauthorized users
+          # path of the user from your endpoint
+    delete: # endpoint request type (post request)
+      tags:
+        - Group
+      security:
+        - Bearer: []
+      summary: Delete group By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to delete a group
+          required: false
+          type: string
+      responses:
+        200:
+          description: Delete Confirmation
+        401:
+          description: Unauthorized users
+    put: # endpoint request type (post request)
+      tags:
+        - Group
+      security:
+        - Bearer: []
+      summary: Update group
+      produces:
+        - application/json
+      parameters:
+        - name:       # name of parameter passed
+          type: string
+        - in: body
+          name: update group
+          description: It enables a user to update group
+          required: false
+          schema:
+            $ref: '#/definitions/groupUpdate'
+      responses:
+        200:
+          description: An object with a group
+        401:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  groupCreate:
+    type: object
+    properties:
+      name:
+        type: string
+  groupUpdate:
+    type: object
+    properties:
+      name:
+        type: string
+      steps:
+        type: array
+        items:
+          type: string

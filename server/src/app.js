@@ -9,12 +9,12 @@ const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
 const express = require('@feathersjs/express');
 const socketio = require('@feathersjs/socketio');
-
-
+const bodyParser = require('body-parser');
 const middleware = require('./middleware');
 const services = require('./services');
 const appHooks = require('./app.hooks');
 const channels = require('./channels');
+const mongoose = require("./mongoose")
 
 const authentication = require('./authentication');
 
@@ -22,6 +22,7 @@ const app = express(feathers());
 
 // Load app configuration
 app.configure(configuration());
+app.configure(mongoose);
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet({
   contentSecurityPolicy: false
@@ -31,6 +32,7 @@ app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
+app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
 // Host the public folder
 app.use('/', express.static(app.get('public')));
 

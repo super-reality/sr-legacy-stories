@@ -1,2 +1,7 @@
 
-./server/node_modules
+server/node_modules
+server/package-lock.json
+.idea/
+server/README.md
+server/.editorconfig
+documentation/node_modules

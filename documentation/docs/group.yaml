@@ -10,7 +10,7 @@ paths:
   /groups:         # path of the user from your endpoint
     post: # endpoint request type (post request)
       tags:
-        - Chapter
+        - Group
       security:
         - Bearer: []
       summary: Create group
@@ -20,8 +20,8 @@ paths:
       - name:       # name of parameter passed
         type: string
       - in: body
-        name: create chapter
-        description: It enables a user to create chapter
+        name: create group
+        description: It enables a user to create group
         required: false
         schema:
           $ref: '#/definitions/groupCreate'
@@ -36,7 +36,7 @@ paths:
           description: Unauthorized users
     get: # endpoint request type (post request)
       tags:
-        - Chapter
+        - Group
       security:
         - Bearer: []
       summary: Get All groups
@@ -47,10 +47,10 @@ paths:
           description: An object with a group values
         401:
           description: Unauthorized users
-  /chapters/{id}:         # path of the user from your endpoint
+  /groups/{id}:         # path of the user from your endpoint
     get: # endpoint request type (post request)
       tags:
-        - Chapter
+        - Group
       security:
         - Bearer: []
       summary: Get group By Id
@@ -64,7 +64,7 @@ paths:
           type: string
       responses:
         200:
-          description: An object with a chapter values
+          description: An object with a group values
         401:
           description: Unauthorized users
           # path of the user from your endpoint
@@ -113,14 +113,29 @@ definitions:        # Schema definition for the request body
   groupCreate:
     type: object
     properties:
-      name:
+      groupName:
         type: string
+      users:
+        type: array
+        items:
+          type: object
+      channels: 
+         type: array
+         items: object
+      groupPhoto: 
+          type: string
   groupUpdate:
     type: object
     properties:
-      name:
+      groupName:
         type: string
-      steps:
+      users:
         type: array
         items:
+          type: object
+      channels: 
+         type: array
+         items: object
+      groupPhoto: 
           type: string
+

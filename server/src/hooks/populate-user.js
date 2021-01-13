@@ -7,8 +7,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     const addUser = async message => {
       // Get the user based on their id, pass the `params` along so
       // that we get a safe version of the user data
-      console.log(message)
-      console.log(message.userId)
       const user = await app.service('users').get(message.userId, params);
       console.log(user.toString() + "is here")
       // Merge the message content to include the `user` object
@@ -25,7 +23,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     } else {
       // Otherwise just update the single result
       context.result = await addUser(result);
-      console.log(context)
     }
 
     return context;

@@ -7,79 +7,79 @@ securityDefinitions:
     name: Authorization
     in: header
 paths:
-  /groups:         # path of the user from your endpoint
+  /collectives:         # path of the user from your endpoint
     post: # endpoint request type (post request)
       tags:
-        - Group
+        - Collective
       security:
         - Bearer: []
-      summary: Create group
+      summary: Create collective
       produces:
       - application/json
       parameters:
       - name:       # name of parameter passed
         type: string
       - in: body
-        name: create group
-        description: It enables a user to create group
+        name: create collective
+        description: It enables a user to create collective
         required: false
         schema:
-          $ref: '#/definitions/groupCreate'
+          $ref: '#/definitions/collectiveCreate'
       responses:
         201:
-          description: An object with a new group
+          description: An object with a new collective
           content:
             application/json:
               schema:
-                $ref: '#/definitions/groupCreate'
+                $ref: '#/definitions/collectiveCreate'
         401:
           description: Unauthorized users
     get: # endpoint request type (post request)
       tags:
-        - Group
+        - Collective
       security:
         - Bearer: []
-      summary: Get All groups
+      summary: Get All collectives
       produces:
       - application/json
       responses:
         200:
-          description: An object with a group values
+          description: An object with a collective values
         401:
           description: Unauthorized users
-  /groups/{id}:         # path of the user from your endpoint
+  /collectives/{id}:         # path of the user from your endpoint
     get: # endpoint request type (post request)
       tags:
-        - Group
+        - Collective
       security:
         - Bearer: []
-      summary: Get group By Id
+      summary: Get collective By Id
       produces:
       - application/json
       parameters:  # name of parameter passed
         - in: path
           name: id
-          description: It enables a user to fetch a group
+          description: It enables a user to fetch a collective
           required: false
           type: string
       responses:
         200:
-          description: An object with a group values
+          description: An object with a collective values
         401:
           description: Unauthorized users
           # path of the user from your endpoint
     delete: # endpoint request type (post request)
       tags:
-        - Group
+        - Collective
       security:
         - Bearer: []
-      summary: Delete group By Id
+      summary: Delete collective By Id
       produces:
       - application/json
       parameters:  # name of parameter passed
         - in: path
           name: id
-          description: It enables a user to delete a group
+          description: It enables a user to delete a collective
           required: false
           type: string
       responses:
@@ -89,31 +89,31 @@ paths:
           description: Unauthorized users
     put: # endpoint request type (post request)
       tags:
-        - Group
+        - Collective
       security:
         - Bearer: []
-      summary: Update group
+      summary: Update collective
       produces:
         - application/json
       parameters:
         - name:       # name of parameter passed
           type: string
         - in: body
-          name: update group
-          description: It enables a user to update group
+          name: update collective
+          description: It enables a user to update collective
           required: false
           schema:
-            $ref: '#/definitions/groupUpdate'
+            $ref: '#/definitions/collectiveUpdate'
       responses:
         200:
-          description: An object with a group
+          description: An object with a collective
         401:
           description: Unauthorized users
 definitions:        # Schema definition for the request body
-  groupCreate:
+  collectiveCreate:
     type: object
     properties:
-      groupName:
+      collectiveName:
         type: string
       users:
         type: array
@@ -122,12 +122,12 @@ definitions:        # Schema definition for the request body
       channels: 
          type: array
          items: object
-      groupPhoto: 
+      collectivePhoto: 
           type: string
-  groupUpdate:
+  collectiveUpdate:
     type: object
     properties:
-      groupName:
+      collectiveName:
         type: string
       users:
         type: array
@@ -136,6 +136,6 @@ definitions:        # Schema definition for the request body
       channels: 
          type: array
          items: object
-      groupPhoto: 
+      collectivePhoto: 
           type: string
 

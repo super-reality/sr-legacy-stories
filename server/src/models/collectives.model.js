@@ -4,12 +4,12 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const schema = new Schema({
 
-    groupName: {
+    collectiveName: {
       type: String,
       required: true,
       index: true
     },
-    groupPhoto: {
+    collectivePhoto: {
       type: String
     },
     ownerId: {

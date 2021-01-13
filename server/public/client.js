@@ -225,7 +225,7 @@ addEventListener('#logout', 'click', async () => {
 });
 
 // "Send" message form submission handler
-addEventListener('#send-message', 'submit', async ev => {
+addEventListener('#send-message', 'keyup', async ev => {
   // This is the message text input field
   const input = document.querySelector('[name="text"]');
 

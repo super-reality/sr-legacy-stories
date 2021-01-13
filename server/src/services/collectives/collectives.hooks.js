@@ -1,4 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const createCollectives = require("../../hooks/collectives")
 module.exports = {
   before: {
     all: [ 
@@ -6,7 +7,7 @@ module.exports = {
     ],
     find: [],
     get: [],
-    create: [],
+    create: [createCollectives()],
     update: [],
     patch: [],
     remove: [

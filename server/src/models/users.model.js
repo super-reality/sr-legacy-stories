@@ -6,12 +6,33 @@ module.exports = function (app) {
     const modelName = 'users'
     const mongooseClient = app.get('mongooseClient')
     const schema = new mongooseClient.Schema({
-        username: {type: String, unique: true, lowercase: true},
-        password: {type: String, required: true},
-        inviteCode: {type: String},
-        firstname: {type: String, required: true},
-        lastname: {type: String, required: true},
-        avatar: {type: String,},
+        username: {
+            type: String,
+            unique: true,
+            lowercase: true
+        },
+        password:
+        {
+            type: String,
+            required: true
+        },
+        inviteCode: {
+            type: String
+        },
+        firstname: {
+            type: String,
+            required: true
+        },
+        lastname: {
+            type: String,
+            required: true
+        },
+        avatar: { type: String },
+        skills: {
+            type: Array,
+            default: []
+        }
+
     }, {
         timestamps: true
     })

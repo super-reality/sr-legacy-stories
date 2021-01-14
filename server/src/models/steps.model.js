@@ -1,10 +1,8 @@
 module.exports = function (app) {
     const modelName = 'steps';
     const mongooseClient = app.get('mongooseClient');
-    const {Schema} = mongooseClient;
+    const { Schema } = mongooseClient;
     const schema = new Schema({
-
-
         name: {
             type: String,
             required: true,
@@ -31,8 +29,8 @@ module.exports = function (app) {
         createdBy: {
             type: Schema.Types.ObjectId
         },
-        createdAt: {type: Date, default: Date.now},
-        updatedAt: {type: Date},
+        createdAt: { type: Date, default: Date.now },
+        updatedAt: { type: Date },
 
     });
 

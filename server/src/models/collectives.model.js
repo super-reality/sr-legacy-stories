@@ -30,7 +30,7 @@ module.exports = function (app) {
     channels: {
       type: Array,
       default: []
-   }
+    }
   })
 
   // This is necessary to avoid model compilation errors in watch mode

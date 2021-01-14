@@ -1,7 +1,7 @@
 module.exports = function (app) {
     const modelName = 'messages';
     const mongooseClient = app.get('mongooseClient');
-    const {Schema} = mongooseClient;
+    const { Schema } = mongooseClient;
     const schema = new Schema({
         text: {
             type: String,

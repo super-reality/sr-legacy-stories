@@ -1,0 +1,126 @@
+schemes:
+  - http
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  /tags:         # path of the user from your endpoint
+    post: # endpoint request type (post request)
+      tags:
+        - Tag
+      security:
+        - Bearer: []
+      summary: Create tag
+      produces:
+      - application/json
+      parameters:
+      - name:       # name of parameter passed
+        type: string
+      - in: body
+        name: create tag
+        description: It enables a user to create tag
+        required: false
+        schema:
+          $ref: '#/definitions/tagCreate'
+      responses:
+        201:
+          description: An object with a new tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/tagCreate'
+        401:
+          description: Unauthorized users
+    get: # endpoint request type (post request)
+      tags:
+        - Tag
+      security:
+        - Bearer: []
+      summary: Get All Tags
+      produces:
+      - application/json
+      responses:
+        200:
+          description: An object with a tag values
+        401:
+          description: Unauthorized users
+  /tags/{id}:         # path of the user from your endpoint
+    get: # endpoint request type (post request)
+      tags:
+        - Tag
+      security:
+        - Bearer: []
+      summary: Get tag By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to fetch a tag
+          required: false
+          type: string
+      responses:
+        200:
+          description: An object with a tag values
+        401:
+          description: Unauthorized users
+          # path of the user from your endpoint
+    delete: # endpoint request type (post request)
+      tags:
+        - Tag
+      security:
+        - Bearer: []
+      summary: Delete tag By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to delete a tag
+          required: false
+          type: string
+      responses:
+        200:
+          description: Delete Confirmation
+        401:
+          description: Unauthorized users
+    put: # endpoint request type (post request)
+      tags:
+        - Tag
+      security:
+        - Bearer: []
+      summary: Update tag
+      produces:
+        - application/json
+      parameters:
+        - name:       # name of parameter passed
+          type: string
+        - in: body
+          name: update tag
+          description: It enables a user to update tag
+          required: false
+          schema:
+            $ref: '#/definitions/tagUpdate'
+      responses:
+        200:
+          description: An object with a tag
+        401:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  tagCreate:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+  tagUpdate:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string

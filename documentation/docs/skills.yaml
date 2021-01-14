@@ -1,0 +1,126 @@
+schemes:
+  - http
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  /skills:         # path of the user from your endpoint
+    post: # endpoint request type (post request)
+      tags:
+        - Skill
+      security:
+        - Bearer: []
+      summary: Create skill
+      produces:
+      - application/json
+      parameters:
+      - name:       # name of parameter passed
+        type: string
+      - in: body
+        name: create skill
+        description: It enables a user to create skill
+        required: false
+        schema:
+          $ref: '#/definitions/skillCreate'
+      responses:
+        201:
+          description: An object with a new skill
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/skillCreate'
+        401:
+          description: Unauthorized users
+    get: # endpoint request type (post request)
+      tags:
+        - Skill
+      security:
+        - Bearer: []
+      summary: Get All Skills
+      produces:
+      - application/json
+      responses:
+        200:
+          description: An object with a skill values
+        401:
+          description: Unauthorized users
+  /skills/{id}:         # path of the user from your endpoint
+    get: # endpoint request type (post request)
+      tags:
+        - Skill
+      security:
+        - Bearer: []
+      summary: Get skill By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to fetch a skill
+          required: false
+          type: string
+      responses:
+        200:
+          description: An object with a skill values
+        401:
+          description: Unauthorized users
+          # path of the user from your endpoint
+    delete: # endpoint request type (post request)
+      tags:
+        - Skill
+      security:
+        - Bearer: []
+      summary: Delete skill By Id
+      produces:
+      - application/json
+      parameters:  # name of parameter passed
+        - in: path
+          name: id
+          description: It enables a user to delete a skill
+          required: false
+          type: string
+      responses:
+        200:
+          description: Delete Confirmation
+        401:
+          description: Unauthorized users
+    put: # endpoint request type (post request)
+      tags:
+        - Skill
+      security:
+        - Bearer: []
+      summary: Update skill
+      produces:
+        - application/json
+      parameters:
+        - name:       # name of parameter passed
+          type: string
+        - in: body
+          name: update skill
+          description: It enables a user to update skill
+          required: false
+          schema:
+            $ref: '#/definitions/skillUpdate'
+      responses:
+        200:
+          description: An object with a skill
+        401:
+          description: Unauthorized users
+definitions:        # Schema definition for the request body
+  skillCreate:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+  skillUpdate:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string

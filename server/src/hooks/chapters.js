@@ -3,13 +3,11 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
   return async context => {
     // Get `app`, `method`, `params` and `result` from the hook context
     const { app, method, result, params } = context;
-      console.log("this is params"+params.id)
     // Function that adds the user to a single message object
     const getChapters = async chapters => {
       // Get the user based on their id, pass the `params` along so
       // that we get a safe version of the user data
       const chapter = await app.service('chapters').find(1, params);
-     console.log(chapter)
       // Merge the message content to include the `user` object
       return {
         ...chapters,

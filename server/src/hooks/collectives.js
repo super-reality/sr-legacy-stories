@@ -4,7 +4,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
 
         const { data, method, result, params } = context;
         data.ownerId = params.user._id
-        data.users = [params.user]
+        data.users = [params.user._id]
         if (data.collectiveName.length < 4) {
             throw new BadRequest('Invalid name', data, { errors: { name: 'Name should be greater than 4 character' } });
         }

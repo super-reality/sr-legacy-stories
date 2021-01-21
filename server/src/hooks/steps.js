@@ -3,7 +3,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     return async context => {
 
         const {data} = context;
-        console.log(data)
         if (data.name.length < 4) {
             throw new BadRequest('Invalid name', data, {errors: {name: 'Name should be greater than 4 character'}});
         }

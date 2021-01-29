@@ -1,4 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const createGroups = require("../../hooks/groups")
 module.exports = {
   before: {
     all: [ 
@@ -6,7 +7,7 @@ module.exports = {
     ],
     find: [],
     get: [],
-    create: [], 
+    create: [createGroups()],
     update: [],
     patch: [],
     remove: [

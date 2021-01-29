@@ -1,23 +1,30 @@
 module.exports = function (app) {
-    const modelName = 'channels';
+    const modelName = 'messages';
     const mongooseClient = app.get('mongooseClient');
     const { Schema } = mongooseClient;
     const schema = new Schema({
+        text: {
+            type: String,
+            allowNull: false
+        },
+        user: {
+            username: {
+                type: String,
 
-        channelName: {
-            type: String,
-            unique: true,
-            required: true
+            },
+            avatar: {
+                type: String,
+
+            },
+            _id: {
+                type: String,
+            }
         },
-        channelPhoto: {
-            type: String,
+        userId: {
+            type: String
         },
-        categoryId: {
-            type: String,
-            required: true
-        },
-        createdBy: {
-            type: Schema.Types.ObjectId,
+        channelId: {
+            type: Schema.types.ObjectId
         },
         createdAt: {
             type: Date

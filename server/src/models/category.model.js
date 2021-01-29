@@ -1,18 +1,15 @@
 module.exports = function (app) {
-    const modelName = 'channels';
+    const modelName = 'category';
     const mongooseClient = app.get('mongooseClient');
     const { Schema } = mongooseClient;
     const schema = new Schema({
 
-        channelName: {
+        categoryName: {
             type: String,
             unique: true,
             required: true
         },
-        channelPhoto: {
-            type: String,
-        },
-        categoryId: {
+        groupId: {
             type: String,
             required: true
         },

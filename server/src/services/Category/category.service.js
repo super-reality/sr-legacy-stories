@@ -1,7 +1,7 @@
  // Initializes the `boards` service on path `/boards`
-const { Chapters } = require('./chapters.class');
-const createModel = require('../../models/chapters.model');
-const hooks = require('./chapters.hooks');
+const createModel = require('../../models/category.model');
+const hooks = require('./category.hooks');
+const { Category } = require('./category.class');
 
 module.exports = function (app) {
   const options = {
@@ -11,10 +11,10 @@ module.exports = function (app) {
 
 
   // Initialize our service with any options it requires
-  app.use('/chapters', new Chapters(options, app));
+  app.use('/category', new Category(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('chapters');
+  const service = app.service('category');
 
   service.hooks(hooks);
 };

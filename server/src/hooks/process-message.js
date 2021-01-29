@@ -3,7 +3,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
 
     const { data } = context;
 
-    console.log(data)
 
     // Throw an error if we didn't get a text
     if(!data.text) {
@@ -13,7 +12,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     // The logged in user
     const { user } = context.params;
 
-    console.log(user)
     // The actual message text
     // Make sure that messages are no longer than 400 characters
     const text = context.data.text.substring(0, 400);

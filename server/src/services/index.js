@@ -6,7 +6,7 @@ const groups = require('./Groups/groups.service.js')
 const skills = require('./skills/skills.service.js')
 const tags = require('./tags/tags.service.js')
 const channels = require('./channels/channels.service.js')
-const category = require('./category/category.service.js')
+const category = require('./categories/category.service.js')
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
     app.configure(chapters)

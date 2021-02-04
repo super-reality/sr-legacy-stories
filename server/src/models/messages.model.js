@@ -25,7 +25,7 @@ module.exports = function (app) {
             }
         },
         channelId: {
-            type: Schema.types.objectId
+            type: String
         },
         userId: {
             type: String

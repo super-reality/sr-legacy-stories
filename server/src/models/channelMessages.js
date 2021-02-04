@@ -24,7 +24,7 @@ module.exports = function (app) {
             type: String
         },
         channelId: {
-            type: Schema.types.ObjectId
+            type: String
         },
         createdAt: {
             type: Date

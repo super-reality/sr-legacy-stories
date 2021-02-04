@@ -7,6 +7,10 @@ module.exports = function (app) {
             type: String,
             allowNull: false
         },
+        channelId: {
+            type: Schema.types.objectId,
+
+        },
         user: {
             username: {
                 type: String,
@@ -19,6 +23,9 @@ module.exports = function (app) {
             _id: {
                 type: String,
             }
+        },
+        channelId: {
+            type: Schema.types.objectId
         },
         userId: {
             type: String

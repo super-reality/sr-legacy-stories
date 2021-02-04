@@ -8,7 +8,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
       // Get the user based on their id, pass the `params` along so
       // that we get a safe version of the user data
       const user = await app.service('users').get(message.userId, params);
-      console.log(user.toString() + "is here")
       // Merge the message content to include the `user` object
       return {
         ...message,

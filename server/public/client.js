@@ -142,9 +142,12 @@ const showChat = async () => {
   document.getElementById('app').innerHTML = chatHTML;
 
   // Find the latest 25 messages. They will come with the newest first
+  var cId = '600b196bf194e54665e59285'
   const messages = await client.service('messages').find({
     query: {
+     
       $sort: { createdAt: -1 },
+      channelId : cId,
       $limit: 25
     }
   });

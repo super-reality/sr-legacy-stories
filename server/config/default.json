@@ -28,5 +28,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb+srv://sifan:gamegensifan@cluster0.ke1ja.mongodb.net/super-reality-realtime"
+  "mongodb": "mongodb+srv://sifan:gamegensifan@cluster0.ke1ja.mongodb.net/super-reality-dev"
 }

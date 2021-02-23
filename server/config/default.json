@@ -9,7 +9,7 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiZXhwIjoxNTQ3OTc0MDgyfQ.2Ye5_w1z3zpD4dSGdRp3s98ZipCNQqmsHRB9vioOx54=",
+    "secret": "a3g48YKTMOnIZnU3dfynV9ARig0=",
     "authStrategies": [
       "jwt",
       "local"
@@ -18,8 +18,8 @@
       "header": {
         "typ": "access"
       },
-      "audience": "openworld-server",
-      "issuer": "com.gamegen.openworld-server",
+      "audience": "https://yourdomain.com",
+      "issuer": "feathers",
       "algorithm": "HS256",
       "expiresIn": "7d"
     },
